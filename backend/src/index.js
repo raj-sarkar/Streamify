@@ -5,6 +5,7 @@ import cors from 'cors';
 import { connectDB } from './utils/connectDB.js';
 import dns from 'dns';
 import authRoutes from './routes/auth.route.js';
+import movieRoutes from './routes/movie.route.js';
 
 dns.setServers(["1.1.1.1","1.0.0.1"]);
 
@@ -19,6 +20,7 @@ app.use(cookieParser());
 app.use(express.json());
 
 app.use('/api/auth', authRoutes);
+app.use('/api/movies', movieRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
