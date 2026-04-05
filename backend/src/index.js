@@ -6,6 +6,7 @@ import { connectDB } from './utils/connectDB.js';
 import dns from 'dns';
 import authRoutes from './routes/auth.route.js';
 import movieRoutes from './routes/movie.route.js';
+import watchlistRoutes from './routes/watchlist.route.js';
 
 dns.setServers(["1.1.1.1","1.0.0.1"]);
 
@@ -21,6 +22,7 @@ app.use(express.json());
 
 app.use('/api/auth', authRoutes);
 app.use('/api/movies', movieRoutes);
+app.use('/api/watchlist', watchlistRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
