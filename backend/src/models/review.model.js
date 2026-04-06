@@ -1,0 +1,28 @@
+import mongoose from "mongoose";
+
+const reviewSchema = new mongoose.Schema({
+    userId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "user",
+        required: true,
+    },
+    movieId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "movie",
+        required: true,
+    },
+    rating: {
+        type: Number,
+        required: true,
+        min: 1,
+        max: 5,
+    },
+    comment: {
+        type: String,
+        required: true,
+    },
+}, { timestamps: true });
+
+const Review = mongoose.model("review", reviewSchema);
+
+export default Review;

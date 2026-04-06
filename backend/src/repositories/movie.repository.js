@@ -13,7 +13,7 @@ export const getAllMovies = async () => {
 };
 
 export const updateMovie = async (id, updateData) => {
-    return await Movie.findByIdAndUpdate(id, updateData, { new: true });
+    return await Movie.findByIdAndUpdate(id, updateData, { returnDocument: "after" });
 };
 
 export const deleteMovie = async (id) => {
@@ -26,4 +26,8 @@ export const searchMovies = async (query) => {
 
 export const trendingMovies = async () => {
     return await Movie.find().sort({ views: -1 }).limit(10);
+};
+
+export const updateMovieRating = async (movieId, rating) => {    
+    return await Movie.findByIdAndUpdate(movieId, {rating}, { returnDocument: "after" });
 };
