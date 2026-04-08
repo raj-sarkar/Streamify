@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { type } from "os";
 
 const videoSchema = new mongoose.Schema({
     sectionId: {
@@ -12,11 +13,12 @@ const videoSchema = new mongoose.Schema({
     },
     videoUrl: {
         type: String,
-        required: true,
+    },
+    hlsUrl:{
+        type: String,
     },
     duration: {
         type: Number,
-        required: true,
     }
 }
     , { timestamps: true });

@@ -11,6 +11,7 @@ import reviewRoutes from './routes/review.routes.js';
 import courseRoutes from './routes/course.route.js';
 import sectionRoutes from './routes/section.route.js';
 import videoRoutes from './routes/video.route.js';
+import watchHistoryRoutes from './routes/watchHistory.route.js';
 
 dns.setServers(["1.1.1.1","1.0.0.1"]);
 
@@ -31,6 +32,7 @@ app.use('/api/reviews', reviewRoutes);
 app.use('/api/courses', courseRoutes);
 app.use('/api/sections', sectionRoutes);
 app.use('/api/videos', videoRoutes);
+app.use('/api/stream', watchHistoryRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
