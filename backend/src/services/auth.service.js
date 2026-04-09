@@ -1,9 +1,10 @@
 import bcrypt from "bcrypt";
 import { findUserByEmail, createUser } from "../repositories/user.repository.js";
 import { generateToken } from "../utils/generateToken.js";
+import { uploadToCloudinary } from "./storage.service.js";
 
 export const registerUser = async (data, currentUser,res) => {
-    const { name, email, password, role } = data;
+    const { name, email, password, role, profilePicture } = data;
 
     if (!name || !email || !password) {
         throw new Error("All fields required");
@@ -21,14 +22,17 @@ export const registerUser = async (data, currentUser,res) => {
         assignedRole = role;
     }
 
-    const profilePicture = `https://res.cloudinary.com/dct0no7b6/image/upload/v1775285513/avatar_elui5s.png`;
+    let imageUrl = `https://res.cloudinary.com/dct0no7b6/image/upload/v1775285513/avatar_elui5s.png`;
+    if(profilePicture) {
+        imageUrl = await uploadToCloudinary(profilePicture);
+    }
 
     const user = await createUser({
         name,
         email,
         password: hashedPassword,
         role: assignedRole,
-        profilePicture
+        profilePicture: imageUrl
     });
 
     const token = generateToken(user._id, user.role, res);

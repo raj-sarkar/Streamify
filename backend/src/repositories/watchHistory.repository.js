@@ -14,3 +14,7 @@ export const createWatchHistory = async (data,userId) => {
 export const getWatchHistoryByVideoIdAndUserId = async (videoId, userId) => {
     return await WatchHistory.findOne({ videoId, userId });
 };
+
+export const getWatchHistoryByUserId = async (userId) => {
+    return await WatchHistory.find({ userId }).populate("videoId");
+};

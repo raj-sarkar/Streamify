@@ -2,7 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
-import { connectDB } from './utils/connectDB.js';
+import { connectDB } from './config/connectDB.js';
 import dns from 'dns';
 import authRoutes from './routes/auth.route.js';
 import movieRoutes from './routes/movie.route.js';
@@ -12,6 +12,7 @@ import courseRoutes from './routes/course.route.js';
 import sectionRoutes from './routes/section.route.js';
 import videoRoutes from './routes/video.route.js';
 import watchHistoryRoutes from './routes/watchHistory.route.js';
+import userRoutes from './routes/user.route.js';
 
 dns.setServers(["1.1.1.1","1.0.0.1"]);
 
@@ -21,7 +22,10 @@ connectDB();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-app.use(cors());
+app.use(cors({
+    origin: process.env.FRONTEND_URL,
+    credentials: true
+}));
 app.use(cookieParser());
 app.use(express.json());
 
@@ -33,6 +37,9 @@ app.use('/api/courses', courseRoutes);
 app.use('/api/sections', sectionRoutes);
 app.use('/api/videos', videoRoutes);
 app.use('/api/stream', watchHistoryRoutes);
+app.use('/api/user', userRoutes);
+
+app.use(express.static('uploads'));
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

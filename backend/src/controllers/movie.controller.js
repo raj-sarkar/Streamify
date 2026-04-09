@@ -10,7 +10,9 @@ import {
 
 export const createMovieController = async (req, res) => {
     try {
-        const newMovie = await createMovieService(req.body, req.user);
+        const thumbnail = req.files.thumbnail?.[0];
+        const movie = req.files.movie?.[0];
+        const newMovie = await createMovieService({ ...req.body, thumbnail, movie }, req.user);
         res.status(201).json(newMovie);
     } catch (error) {
         res.status(400).json({ message: error.message });

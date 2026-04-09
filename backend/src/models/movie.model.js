@@ -16,15 +16,15 @@ const movieSchema = new mongoose.Schema({
     },
     duration: {
         type: Number,
-        required: true,
     },
     thumbnail: {
         type: String,
-        required: true,
+    },
+    hlsUrl: {
+        type: String,
     },
     videoUrl: {
         type: String,
-        required: true,
     },
     uploadedBy: {
         type: mongoose.Schema.Types.ObjectId,

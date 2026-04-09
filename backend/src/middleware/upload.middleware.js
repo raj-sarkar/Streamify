@@ -1,14 +1,20 @@
 import multer from 'multer';
-import path from 'path';
 
 const storage = multer.memoryStorage();
+const allowedTypes = [
+    "image/jpeg",
+    "image/png",
+    "image/webp",
+    "video/mp4",
+    "video/mkv"
+];
 
 const fileFilter = (req, file, cb) => {
-    if(file.mimetype.startsWith('video/')) {
+    if (allowedTypes.includes(file.mimetype)) {
         cb(null, true);
     } else {
-        cb(new Error('Only video files are allowed!'), false);
+        cb(new Error("Unsupported file type"), false);
     }
 };
 
-export const upload = multer({ storage, fileFilter, limits: { fileSize: 1000 * 1024 * 1024 } }); // Limit to 100MB
+export const upload = multer({ storage, fileFilter, limits: { fileSize: 1000 * 1024 * 1024 } });
