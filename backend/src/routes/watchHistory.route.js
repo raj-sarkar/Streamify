@@ -5,6 +5,6 @@ import { addToWatchHistoryController, getWatchHistoryController } from "../contr
 const router = Express.Router();
 
 router.post("/progress", protectRoute, addToWatchHistoryController);
-router.get("/progress/:videoId", protectRoute, getWatchHistoryController);
+router.get("/course/:videoId", protectRoute, getWatchHistoryController);
 
 export default router;

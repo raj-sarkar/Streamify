@@ -5,7 +5,7 @@ export const createWatchHistory = async (data,userId) => {
         { userId, videoId: data.videoId },
         { timestamp: data.timestamp },
         {
-            new: true,
+            returnDocument: "after",
             upsert: true
         }
     );
