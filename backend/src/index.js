@@ -13,6 +13,7 @@ import sectionRoutes from './routes/section.route.js';
 import videoRoutes from './routes/video.route.js';
 import watchHistoryRoutes from './routes/watchHistory.route.js';
 import userRoutes from './routes/user.route.js';
+import paymentRoutes from './routes/payment.route.js';
 
 dns.setServers(["1.1.1.1","1.0.0.1"]);
 
@@ -38,6 +39,7 @@ app.use('/api/sections', sectionRoutes);
 app.use('/api/videos', videoRoutes);
 app.use('/api/stream', watchHistoryRoutes);
 app.use('/api/user', userRoutes);
+app.use('/api/payment', paymentRoutes);
 
 app.use(express.static('uploads'));
 
