@@ -11,3 +11,7 @@ export const getVideosBySectionId = async (sectionId) => {
 export const getVideoBySectionIdAndTitle = async (sectionId, title) => {
     return await Video.findOne({ sectionId, title });
 };
+
+export const getVideoById = async (videoId) => {
+    return await Video.findById(videoId);
+};

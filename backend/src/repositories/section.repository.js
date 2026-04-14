@@ -11,3 +11,7 @@ export const getSectionsByCourseId = async (courseId) => {
 export const getSectionByCourseIdAndTitle = async (courseId, title) => {
     return await Section.findOne({ courseId, title });
 };
+
+export const getSectionById = async (sectionId) => {
+    return await Section.findById(sectionId);
+};
