@@ -11,8 +11,8 @@ import { getSectionsByCourseId } from "../repositories/section.repository.js";
 import { getVideosBySectionId } from "../repositories/video.repository.js";
 
 export const createCourseService = async (courseData, instructorId) => {
-    const { title, description, thumbnail, category } = courseData;
-    if (!title || !description || !thumbnail || !category) {
+    const { title, description, thumbnail, category, price } = courseData;
+    if (!title || !description || !thumbnail || !category || !price) {
         throw new Error("All fields are required");
     }
 
