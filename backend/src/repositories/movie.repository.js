@@ -31,3 +31,15 @@ export const trendingMovies = async () => {
 export const updateMovieRating = async (movieId, rating) => {    
     return await Movie.findByIdAndUpdate(movieId, {rating}, { returnDocument: "after" });
 };
+
+export const similarMovies = async (genres) => {
+    return await Movie.find({ genre: { $in: genres } }).limit(20);
+};
+
+export const topRatedMovies = async () => {
+    return await Movie.find().sort({ rating: -1 }).limit(10);
+};
+
+export const weeklyTrendingMovies = async () => {
+    return await Movie.find().sort({ weeklyViews: -1 }).limit(10);
+};
