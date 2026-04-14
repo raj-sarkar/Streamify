@@ -8,7 +8,12 @@ const watchHistorySchema = new mongoose.Schema({
     },
     videoId: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "video",
+        refPath: "type",
+        required: true
+    },
+    type:{ 
+        type: String,
+        enum: ["movie", "video"],
         required: true
     },
     timestamp: {
