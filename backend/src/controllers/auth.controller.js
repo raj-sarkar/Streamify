@@ -2,7 +2,7 @@ import { logoutUser, registerUser, loginUser } from "../services/auth.service.js
 
 export const register = async (req, res) => {
     try {
-        const { user, token } = await registerUser(req.body, req.user, res);
+        const { user, token } = await registerUser({...req.body,profilePicture: req.file}, req.user, res);
 
         res.status(201).json({
             message: "User created successfully",
