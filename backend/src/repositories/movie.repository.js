@@ -12,6 +12,10 @@ export const getAllMovies = async () => {
     return await Movie.find();
 };
 
+export const countMovies = async () => {
+    return await Movie.countDocuments();
+};
+
 export const updateMovie = async (id, updateData) => {
     return await Movie.findByIdAndUpdate(id, updateData, { returnDocument: "after" });
 };

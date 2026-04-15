@@ -12,6 +12,10 @@ export const removeFromWatchlist = async (userId, movieId) => {
     return await Watchlist.findOneAndDelete({ userId, movieId });
 };
 
+export const countWatchlistEntries = async () => {
+    return await Watchlist.countDocuments();
+};
+
 export const addToWatchlist = async (userId, movieId) => {
     const newEntry = new Watchlist({ userId, movieId });
 

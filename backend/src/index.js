@@ -15,6 +15,7 @@ import watchHistoryRoutes from './routes/watchHistory.route.js';
 import userRoutes from './routes/user.route.js';
 import paymentRoutes from './routes/payment.route.js';
 import recommendationRoutes from './routes/recommendation.route.js';
+import adminRoutes from './routes/admin.route.js';
 
 dns.setServers(["1.1.1.1","1.0.0.1"]);
 
@@ -42,6 +43,7 @@ app.use('/api/stream', watchHistoryRoutes);
 app.use('/api/user', userRoutes);
 app.use('/api/payment', paymentRoutes);
 app.use('/api/recommendations', recommendationRoutes);
+app.use('/api/admin', adminRoutes);
 
 app.use(express.static('uploads'));
 

@@ -20,3 +20,7 @@ export const getWatchHistoryByUserId = async (userId) => {
     const videos = await WatchHistory.find({ userId, type: "video" }).populate("videoId");
     return { movies, videos };
 };
+
+export const countWatchHistoryEntries = async () => {
+    return await WatchHistory.countDocuments();
+};

@@ -13,6 +13,10 @@ export const getCourseById = async (courseId) => {
     return await Course.findById(courseId);
 };
 
+export const countCourses = async () => {
+    return await Course.countDocuments();
+};
+
 export const updateCourse = async (courseId, courseData) => {
     return await Course.findByIdAndUpdate(courseId, courseData, { returnDocument: "after" });
 };
