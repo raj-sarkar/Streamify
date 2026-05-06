@@ -1,4 +1,4 @@
-export const THEME_MODES = ['light', 'dark'] as const;
+export const THEME_MODES = ['teal', 'dark'] as const;
 
 export const HTML_FONT_SIZE = 10;
 

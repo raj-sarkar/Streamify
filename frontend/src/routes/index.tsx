@@ -1,5 +1,6 @@
 import { ProtectRoute } from '@protectRoute';
 import { createBrowserRouter } from 'react-router-dom';
+import { LoginPage } from '@pages/Login/';
 
 const router = createBrowserRouter([
     {
@@ -16,7 +17,7 @@ const router = createBrowserRouter([
         children: [
             {
                 path: '/login',
-                element: <div>Login</div>,
+                element: <LoginPage />,
             },
         ],
     },

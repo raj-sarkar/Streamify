@@ -2,12 +2,12 @@ import type { PaletteOptions } from '@mui/material/styles';
 
 import { THEME_MODES } from '@constant';
 
-const lightPalette = {
+const tealPalette = {
     primary: {
-        main: '#4F7C82',
-        dark: '#0B2E33',
-        light: '#93B1B5',
-        contrastText: '#B8E3E9',
+        main: '#7DA78C',
+        dark: '#35858E',
+        light: '#C2D099',
+        contrastText: '#E6EEC9',
     },
     grey: {
         50: '#F9FAFB',
@@ -28,10 +28,13 @@ const lightPalette = {
 
 const darkPalette = {
     primary: {
-        main: '#7CC3CA',
-        dark: '#FFFFFF',
-        light: '#0B2E33',
-        contrastText: '#E6F7F9',
+        main: '#424769',
+        dark: '#2D3250',
+        light: '#7077A1',
+        contrastText: '#ffffff',
+    },
+    secondary:{
+        main: "#F6B17A"
     },
     grey: {
         50: '#111827',
@@ -53,5 +56,5 @@ const darkPalette = {
 export const getPalette = (
     mode: (typeof THEME_MODES)[number],
 ): PaletteOptions => {
-    return mode === 'light' ? lightPalette : darkPalette;
+    return mode === 'teal' ? tealPalette : darkPalette;
 };
