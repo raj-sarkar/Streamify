@@ -28,13 +28,13 @@ const tealPalette = {
 
 const darkPalette = {
     primary: {
-        main: '#424769',
-        dark: '#2D3250',
-        light: '#7077A1',
-        contrastText: '#ffffff',
+        main: '#262626',
+        // dark: '#2D3250',
+        light: '#323232',
+        contrastText: '#E2E8CE',
     },
     secondary:{
-        main: "#F6B17A"
+        main: "#A3D977"
     },
     grey: {
         50: '#111827',

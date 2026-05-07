@@ -29,7 +29,7 @@ export const Form=(props:formProps)=>{
                     {isLoading ? (
                         <MuiCircularProgress color="inherit" size={20} />
                     ) : (
-                        <Typography variant='h4'>{btnText}</Typography>
+                        <Typography variant='h4' color={theme.palette.primary.main}>{btnText}</Typography>
                     )}
                 </StyledButton>
                 <Typography variant="subtitle2">

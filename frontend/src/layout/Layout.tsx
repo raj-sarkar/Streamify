@@ -9,7 +9,7 @@ export const Layout = (props: LayoutProps) => {
     return (
         <>
             {showHeader && <HeaderContainer />}
-            <MuiStack direction="row" justifyContent="center" minHeight="100vh" bgcolor={theme.palette.primary.dark}>
+            <MuiStack direction="row" justifyContent="center" minHeight="100vh" bgcolor={theme.palette.primary.main}>
                 <MuiBox component="main" maxWidth={1600} p={2}>
                     {children}
                 </MuiBox>
