@@ -1,5 +1,5 @@
-import { Typography as MuiTypography, useTheme } from "@mui/material";
-import type { TypographyProps as MuiTypographyProps } from "@mui/material";
+import { Typography as MuiTypography, useTheme } from '@mui/material';
+import type { TypographyProps as MuiTypographyProps } from '@mui/material';
 
 /**
  * Typography wrapper with optional line clamping.
@@ -8,7 +8,7 @@ import type { TypographyProps as MuiTypographyProps } from "@mui/material";
  */
 export const Typography = (props: MuiTypographyProps) => {
     const { color, ...rest } = props;
-    const theme=useTheme();
+    const theme = useTheme();
 
     return (
         <MuiTypography

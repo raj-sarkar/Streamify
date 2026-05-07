@@ -1,4 +1,4 @@
-import type { SvgIconProps as MuiSvgIconProps } from "@mui/material";
+import type { SvgIconProps as MuiSvgIconProps } from '@mui/material';
 
 /**
  * Types for input field item
@@ -13,7 +13,7 @@ export interface InputFieldItem {
     id: string;
     icon: React.ComponentType<MuiSvgIconProps>;
     onChange: (
-        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
     ) => void;
     placeholder?: string;
     error: string;

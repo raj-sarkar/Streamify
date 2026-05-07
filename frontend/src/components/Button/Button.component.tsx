@@ -1,5 +1,5 @@
-import { StyledButton } from "./Button.styles";
-import type { ButtonProps } from "./Button.types";
+import { StyledButton } from './Button.styles';
+import type { ButtonProps } from './Button.types';
 
 /**
  * A styled MUI button component that accepts custom background color and text color.
@@ -12,10 +12,7 @@ export const Button = (props: ButtonProps) => {
     const { children, bgColor, ...rest } = props;
 
     return (
-        <StyledButton
-            bgColor={bgColor}
-            {...rest}
-        >
+        <StyledButton bgColor={bgColor} {...rest}>
             {children}
         </StyledButton>
     );

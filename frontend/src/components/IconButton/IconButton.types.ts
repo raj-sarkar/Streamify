@@ -1,10 +1,10 @@
-import type { IconButtonProps as MuiIconButtonProps } from "@mui/material";
+import type { IconButtonProps as MuiIconButtonProps } from '@mui/material';
 
-import { ICON_SIZE } from "@constant";
+import { ICON_SIZE } from '@constant';
 
 type CustomMuiIconButtonProps = Omit<
     MuiIconButtonProps,
-    "children" | "color" | "size"
+    'children' | 'color' | 'size'
 >;
 
 /**

@@ -1,3 +1,5 @@
+import { StyledAppBar } from './Header.styles';
+
 export const HeaderContainer = () => {
-    return <div>HeaderContainer</div>;
+    return <StyledAppBar>HeaderContainer</StyledAppBar>;
 };

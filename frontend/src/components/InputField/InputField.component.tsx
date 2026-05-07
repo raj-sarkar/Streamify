@@ -1,12 +1,12 @@
 import {
     FormHelperText as MuiFormHelperText,
     InputAdornment as MuiInputAdornment,
-} from "@mui/material";
+} from '@mui/material';
 
-import { Icon } from "@components/Icon";
+import { Icon } from '@components/Icon';
 
-import { StyledFormControl, StyledTextField } from "./InputField.styles";
-import type { InputFieldsProps } from "./InputField.types";
+import { StyledFormControl, StyledTextField } from './InputField.styles';
+import type { InputFieldsProps } from './InputField.types';
 
 /**
  *
@@ -24,7 +24,7 @@ export const InputField = (props: InputFieldsProps) => {
                 autoComplete="off"
                 placeholder={item.placeholder}
                 onChange={item.onChange}
-                type={item.type ?? "text"}
+                type={item.type ?? 'text'}
                 InputProps={{
                     startAdornment: (
                         <MuiInputAdornment position="start">

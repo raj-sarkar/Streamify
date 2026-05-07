@@ -1,6 +1,6 @@
-import type { ReactNode } from "react";
+import type { ReactNode } from 'react';
 
-import type { ButtonProps as MuiButtonProps } from "@mui/material";
+import type { ButtonProps as MuiButtonProps } from '@mui/material';
 
 /**
  * Props for Styled Button component

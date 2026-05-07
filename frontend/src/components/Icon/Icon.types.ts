@@ -1,8 +1,8 @@
-import type { SvgIconProps as MuiSvgIconProps } from "@mui/material";
+import type { SvgIconProps as MuiSvgIconProps } from '@mui/material';
 
-import { ICON_SIZE } from "@constant";
+import { ICON_SIZE } from '@constant';
 
-type CustomMuiSvgIconProps = Omit<MuiSvgIconProps, "fontSize" | "color">;
+type CustomMuiSvgIconProps = Omit<MuiSvgIconProps, 'fontSize' | 'color'>;
 
 /**
  * Props for styled Svgicon
