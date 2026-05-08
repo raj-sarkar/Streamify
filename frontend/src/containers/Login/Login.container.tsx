@@ -11,33 +11,78 @@ import { Form } from '@components/Form';
 export const LoginContainer = () => {
     const [login, { isLoading, isFetching }] = useLazyLoginQuery();
     const [loginData, setLoginData] = useState<loginCredentials>({
-        email: 'admin@example.com',
-        password: 'admin123',
+        email: '',
+        password: '',
     });
+    const [loginErrors, setLoginErrors] = useState({
+        email: '',
+        password: '',
+    });
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const dispatch = useAppDispatch();
 
     const loginFieldItems: InputFieldItem[] = [
         {
             id: 'email',
             icon: EmailIcon,
-            onChange: (e) =>
-                setLoginData((prev) => ({ ...prev, email: e.target.value })),
+            onChange: (e) => {
+                setLoginData((prev) => ({ ...prev, email: e.target.value }));
+                if (!e.target.value)
+                    setLoginErrors((prev) => ({
+                        ...prev,
+                        email: 'Email is required',
+                    }));
+                else if (!emailRegex.test(e.target.value))
+                    setLoginErrors((prev) => ({
+                        ...prev,
+                        email: 'Invalid email format',
+                    }));
+                else setLoginErrors((prev) => ({ ...prev, email: '' }));
+            },
             placeholder: 'Email',
-            error: '',
+            error: loginErrors.email,
         },
         {
             id: 'password',
             icon: KeyIcon,
-            onChange: (e) =>
-                setLoginData((prev) => ({ ...prev, password: e.target.value })),
+            onChange: (e) => {
+                setLoginData((prev) => ({ ...prev, password: e.target.value }));
+                if (e.target.value)
+                    setLoginErrors((prev) => ({ ...prev, password: '' }));
+                else
+                    setLoginErrors((prev) => ({
+                        ...prev,
+                        password: 'Password is required',
+                    }));
+            },
             placeholder: 'Password',
-            error: '',
+            error: loginErrors.password,
             type: 'password',
         },
     ];
 
+    const validateForm = () => {
+        let c = 0;
+
+        if (!loginData.email) {
+            setLoginErrors((prev) => ({ ...prev, email: 'Email is required' }));
+            c++;
+        }
+        if (!loginData.password) {
+            setLoginErrors((prev) => ({
+                ...prev,
+                password: 'Password is required',
+            }));
+            c++;
+        }
+        return c === 0;
+    };
+
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        if (!validateForm()) {
+            return;
+        }
         try {
             const data = await login(loginData).unwrap();
             dispatch(setUser({ user: data.user }));

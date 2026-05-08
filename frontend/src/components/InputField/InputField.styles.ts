@@ -23,8 +23,7 @@ export const StyledFormControl = styled(MuiFormControl)(
         width: '90%',
 
         '& .MuiInputBase-root': {
-            borderRadius: typography.pxToRem(10),
-            border: `${typography.pxToRem(1)} solid ${palette.primary.contrastText}`,
+            borderBottom: `${typography.pxToRem(1)} solid ${palette.primary.contrastText}`,
         },
     }),
 );

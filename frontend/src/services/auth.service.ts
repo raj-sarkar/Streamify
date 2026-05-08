@@ -9,9 +9,10 @@ export const authApi = api.injectEndpoints({
                 url: '/auth/login',
                 method: 'POST',
                 body: data,
+                cache: 'no-store',
             }),
         }),
-        logout: builder.query({
+        logout: builder.query<void, void>({
             query: () => ({
                 url: '/auth/logout',
                 method: 'POST',
