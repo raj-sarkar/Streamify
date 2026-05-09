@@ -1,6 +1,7 @@
 import { api } from '@api';
-import type { loginCredentials } from '@containers/Login';
 import type { User } from '@models';
+import type { loginCredentials } from '@containers/Login';
+import type { signupCredentials } from '@containers/Signup/Signup.types';
 
 export const authApi = api.injectEndpoints({
     endpoints: (builder) => ({
@@ -18,9 +19,9 @@ export const authApi = api.injectEndpoints({
                 method: 'POST',
             }),
         }),
-        signup: builder.query({
+        signup: builder.query<{ user: User }, signupCredentials>({
             query: (data) => ({
-                url: '/auth/signup',
+                url: '/auth/register',
                 method: 'POST',
                 body: data,
             }),

@@ -9,4 +9,6 @@ export interface formProps {
     linkText: string;
     linkTo: string;
     isLoading: boolean;
+    picture?: File | null;
+    setPicture?: (image: File) => void;
 }

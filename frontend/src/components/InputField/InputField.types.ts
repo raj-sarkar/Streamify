@@ -11,7 +11,7 @@ import type { SvgIconProps as MuiSvgIconProps } from '@mui/material';
  */
 export interface InputFieldItem {
     id: string;
-    icon: React.ComponentType<MuiSvgIconProps>;
+    icon?: React.ComponentType<MuiSvgIconProps>;
     onChange: (
         e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
     ) => void;
