@@ -7,6 +7,8 @@ import type { loginCredentials } from './Login.types';
 import { setUser } from '@features/auth';
 import { useAppDispatch } from '@hooks';
 import { Form } from '@components/Form';
+import { showSnackbar } from '@features/snackbar';
+import type { errorType } from '@models';
 
 export const LoginContainer = () => {
     const [login, { isLoading, isFetching }] = useLazyLoginQuery();
@@ -86,8 +88,21 @@ export const LoginContainer = () => {
         try {
             const data = await login(loginData).unwrap();
             dispatch(setUser({ user: data.user }));
+            dispatch(
+                showSnackbar({
+                    message: 'Logged in successfully',
+                    severity: 'success',
+                }),
+            );
         } catch (error) {
-            console.error(error);
+            dispatch(
+                showSnackbar({
+                    message:
+                        (error as errorType).data.message ||
+                        'Invalid email or password',
+                    severity: 'error',
+                }),
+            );
         }
     };
 

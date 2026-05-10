@@ -8,6 +8,8 @@ import type { signupCredentials } from './Signup.types';
 import EmailIcon from '@mui/icons-material/Email';
 import KeyIcon from '@mui/icons-material/Key';
 import PersonIcon from '@mui/icons-material/Person';
+import { showSnackbar } from '@features/snackbar';
+import type { errorType } from '@models';
 
 export const SignupContainer = () => {
     const [signup, { isLoading, isFetching }] = useLazySignupQuery();
@@ -169,8 +171,21 @@ export const SignupContainer = () => {
             const data = await signup(formData).unwrap();
 
             dispatch(setUser({ user: data.user }));
+            dispatch(
+                showSnackbar({
+                    message: 'Account created successfully',
+                    severity: 'success',
+                }),
+            );
         } catch (error) {
-            console.log(error);
+            dispatch(
+                showSnackbar({
+                    message:
+                        (error as errorType).data.message ||
+                        'Failed to create account',
+                    severity: 'error',
+                }),
+            );
         }
     };
 

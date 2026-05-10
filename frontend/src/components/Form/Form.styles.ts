@@ -16,13 +16,12 @@ export const StyledBox = styled(MuiBox)(
         padding: spacing(4, 0),
         maxWidth: pxToRem(600),
         borderRadius: pxToRem(10),
-        border: `${pxToRem(0.25)} solid ${palette.primary.contrastText}80`,
+        border: `${pxToRem(0.25)} solid ${palette.primary.contrastText}`,
         display: 'flex',
         flexDirection: 'column',
         gap: pxToRem(16),
         alignItems: 'center',
         backgroundColor: palette.primary.light,
-        boxShadow: `0 0 ${pxToRem(10)} ${palette.primary.contrastText}80`,
     }),
 );
 
