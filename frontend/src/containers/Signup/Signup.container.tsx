@@ -8,7 +8,6 @@ import type { signupCredentials } from './Signup.types';
 import EmailIcon from '@mui/icons-material/Email';
 import KeyIcon from '@mui/icons-material/Key';
 import PersonIcon from '@mui/icons-material/Person';
-import { Preview } from '@mui/icons-material';
 
 export const SignupContainer = () => {
     const [signup, { isLoading, isFetching }] = useLazySignupQuery();
@@ -152,13 +151,27 @@ export const SignupContainer = () => {
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        console.log(signupData);
+
         if (!validateForm()) return;
 
+        const formData = new FormData();
+
+        formData.append('name', signupData.name);
+        formData.append('email', signupData.email);
+        formData.append('password', signupData.password);
+        formData.append('confirmPassword', signupData.confirmPassword);
+
+        if (signupData.profilePicture) {
+            formData.append('profilePicture', signupData.profilePicture);
+        }
+
         try {
-            const data = await signup(signupData).unwrap();
+            const data = await signup(formData).unwrap();
+
             dispatch(setUser({ user: data.user }));
-        } catch (error) {}
+        } catch (error) {
+            console.log(error);
+        }
     };
 
     return (
