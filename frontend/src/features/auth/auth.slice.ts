@@ -20,16 +20,9 @@ const authSlice = createSlice({
                 isInitialized: true,
             };
         },
-        logout: (state) => {
-            return {
-                ...state,
-                authUser: null,
-                isInitialized: true,
-            };
-        },
     },
 });
 
-export const { setUser, logout } = authSlice.actions;
+export const { setUser } = authSlice.actions;
 
 export default authSlice.reducer;

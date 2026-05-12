@@ -1,8 +1,8 @@
 export interface User {
-    id: string;
+    _id: string;
     name: string;
     email: string;
     password: string;
     role: 'user' | 'instructor' | 'admin';
-    profilePictureUrl?: string;
+    profilePicture?: string;
 }
