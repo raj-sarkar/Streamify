@@ -2,14 +2,14 @@ import { styled } from '@mui/material';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Box as MuiBox, Stack as MuiStack } from '@mui/material';
 
-export const StyledContainer = styled(MuiBox)(({ theme: { breakpoints } }) => ({
+export const StyledContainer = styled(MuiBox)(({ }) => ({
     width: '100%',
     position: 'relative',
     borderRadius: 4,
     overflow: 'hidden',
 }));
 
-export const StyledOverlay = styled(MuiBox)(({ theme: { palette } }) => ({
+export const StyledOverlay = styled(MuiBox)(({ }) => ({
     position: 'absolute',
     inset: 0,
     background: `linear-gradient(to right, rgba(2,6,23,0.95) 20%, rgba(2,6,23,0.6) 45%, rgba(2,6,23,0.1) 100%)`,
