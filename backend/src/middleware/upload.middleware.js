@@ -6,7 +6,8 @@ const allowedTypes = [
     "image/png",
     "image/webp",
     "video/mp4",
-    "video/mkv"
+    "video/mkv",
+    "video/x-matroska"
 ];
 
 const fileFilter = (req, file, cb) => {
