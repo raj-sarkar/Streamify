@@ -21,8 +21,9 @@ export const Layout = (props: LayoutProps) => {
                 minHeight="100vh"
                 bgcolor={theme.palette.primary.main}
                 mt={isDesktop ? 16 : 12}
+                width="100%"
             >
-                <MuiBox component="main" maxWidth={1600} p={2}>
+                <MuiBox component="main" maxWidth={1920} p={2}>
                     {children}
                 </MuiBox>
             </MuiStack>
