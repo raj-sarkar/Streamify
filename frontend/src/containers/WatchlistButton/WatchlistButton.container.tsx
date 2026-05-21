@@ -1,6 +1,6 @@
 import { Icon } from '@components/Icon';
 import { showSnackbar } from '@features/snackbar';
-import { useAppDispatch } from '@hooks';
+import { useAppDispatch, useAppSelector } from '@hooks';
 import type { errorType } from '@models';
 import {
     CircularProgress as MuiCircularProgress,
@@ -12,11 +12,12 @@ import {
     useLazyGetWatchListQuery,
     useLazyRemoveFromWatchListQuery,
 } from '@services';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect } from 'react';
 import BookmarkAddIcon from '@mui/icons-material/BookmarkAdd';
 import BookmarkAddedIcon from '@mui/icons-material/BookmarkAdded';
 import type { watchlistButtonProps } from './WatchlistButton.types';
 import { StyledButton } from './WatchlistButton.styles';
+import { setWatchList } from '@features/watchList';
 
 export const WatchlistButton = (props: watchlistButtonProps) => {
     const { movieId } = props;
@@ -41,6 +42,7 @@ export const WatchlistButton = (props: watchlistButtonProps) => {
         },
     ] = useLazyRemoveFromWatchListQuery();
     const dispatch = useAppDispatch();
+    const movies = useAppSelector((state) => state.watchList.movies);
     const isLoading =
         watchListLoading ||
         watchListFetching ||
@@ -48,12 +50,12 @@ export const WatchlistButton = (props: watchlistButtonProps) => {
         addToWatchListFetching ||
         removeFromWatchListLoading ||
         removeFromWatchListFetching;
-    const [watchList, setWatchList] = useState<string[]>([]);
 
     const fetchWatchList = useCallback(async () => {
         try {
             const data = await getWatchList().unwrap();
-            setWatchList(data.map((item) => item.movieId._id));
+            const movies = data.map((item) => item.movieId._id);
+            dispatch(setWatchList({ movies }));
         } catch (error) {
             console.error('Failed to fetch watchlist:', error);
             dispatch(
@@ -122,7 +124,7 @@ export const WatchlistButton = (props: watchlistButtonProps) => {
             bgColor={theme.palette.grey[700]}
             disabled={isLoading}
             onClick={() => {
-                if (watchList.includes(movieId)) {
+                if (movies.includes(movieId)) {
                     removeFromWatchListHandler(movieId);
                 } else {
                     addToWatchListHandler(movieId);
@@ -139,7 +141,7 @@ export const WatchlistButton = (props: watchlistButtonProps) => {
             ) : (
                 <Icon
                     icon={
-                        watchList.includes(movieId)
+                        movies.includes(movieId)
                             ? BookmarkAddedIcon
                             : BookmarkAddIcon
                     }
