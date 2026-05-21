@@ -134,7 +134,7 @@ export const HeaderContainer = () => {
                         >
                             <MuiAvatar
                                 src={user?.profilePicture}
-                                alt="User profile image"
+                                alt={user?.name}
                                 aria-label="See user details"
                                 aria-describedby={id}
                             />

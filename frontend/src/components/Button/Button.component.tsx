@@ -13,7 +13,7 @@ export const Button = (props: ButtonProps) => {
 
     return (
         <StyledButton bgColor={bgColor} {...rest}>
-            {children}
+            {children && children}
         </StyledButton>
     );
 };

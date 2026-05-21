@@ -15,5 +15,5 @@ export interface StyledButtonProps extends MuiButtonProps {
  * @property children - child elements of button
  */
 export interface ButtonProps extends StyledButtonProps {
-    children: ReactNode;
+    children?: ReactNode;
 }

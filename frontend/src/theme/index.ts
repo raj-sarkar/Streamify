@@ -4,7 +4,7 @@ import { createTheme } from '@mui/material/styles';
 import { SCALING_FACTOR, THEME_MODES } from '@constant';
 
 import { components } from './components';
-import { getPalette, typography } from './foundations';
+import { getPalette, typography, mixins } from './foundations';
 
 export const getTheme = (mode: (typeof THEME_MODES)[number]): Theme => {
     /* 
@@ -12,6 +12,7 @@ export const getTheme = (mode: (typeof THEME_MODES)[number]): Theme => {
     */
     let theme: Theme = createTheme({
         palette: getPalette(mode),
+        mixins,
         typography: {
             fontFamily: 'sans-serif',
             ...typography.typographyUtil,
