@@ -7,21 +7,27 @@ import { StyledCard, StyledRating } from './MovieCard.styles';
 import { useMediaQuery, useTheme, Stack as MuiStack } from '@mui/material';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import { Icon } from '@components/Icon';
+import { useNavigate } from 'react-router-dom';
 
 export const MovieCard = (props: movieCardProps) => {
     const { movie, watchlistButton } = props;
     const theme = useTheme();
     const isDesktop = useMediaQuery(theme.breakpoints.up('sm'));
+    const navigate = useNavigate();
 
     return (
-        <StyledCard>
+        <StyledCard onClick={() => navigate(`/movies/${movie._id}`)}>
             <CardMedia
                 sx={{ height: 140 }}
                 image={movie.thumbnail}
                 title={movie.title}
             />
             <CardContent>
-                <Typography gutterBottom variant={isDesktop?"h5":"h4"} component="div">
+                <Typography
+                    gutterBottom
+                    variant={isDesktop ? 'h5' : 'h4'}
+                    component="div"
+                >
                     {movie.title}
                 </Typography>
                 <Typography
@@ -31,15 +37,20 @@ export const MovieCard = (props: movieCardProps) => {
                 >
                     {movie.description}
                 </Typography>
-                <MuiStack direction='row' mt={2} justifyContent='space-between' width='100%'>
-                    <StyledRating 
+                <MuiStack
+                    direction="row"
+                    mt={2}
+                    justifyContent="space-between"
+                    width="100%"
+                >
+                    <StyledRating
                         readOnly
-                        value={movie.rating} 
+                        value={movie.rating}
                         precision={0.1}
                     />
-                    <MuiStack direction='row' alignItems='center' gap={2} >
+                    <MuiStack direction="row" alignItems="center" gap={2}>
                         <Icon icon={VisibilityIcon} />
-                        <Typography variant='subtitle1'>
+                        <Typography variant="subtitle1">
                             {movie.views}
                         </Typography>
                     </MuiStack>

@@ -123,7 +123,8 @@ export const WatchlistButton = (props: watchlistButtonProps) => {
         <StyledButton
             bgColor={theme.palette.grey[700]}
             disabled={isLoading}
-            onClick={() => {
+            onClick={(e) => {
+                e.stopPropagation();
                 if (movies.includes(movieId)) {
                     removeFromWatchListHandler(movieId);
                 } else {
